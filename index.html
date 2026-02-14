@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal de Acceso - Regalo de Cumple a mi Coshi</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="theme-light">
+    <div id="login-screen" class="scene">
+      <div class="login-card">
+        <div class="avatar-container">
+          <img src="poro.png" alt="Avatar" class="login-avatar" />
+        </div>
+        <h1>Bienvenida</h1>
+        <p>Adivina el código para acceder</p>
+        <div class="input-group">
+          <input type="password" id="pass" placeholder="Código de Acceso" />
+        </div>
+        <button onclick="iniciarSecuencia()" id="btn-acceder">ACCEDER</button>
+        <p class="hint-text">
+          Pista del código: Tú no te llamas Yenni, y yo no me llamo Pedro.
+        </p>
+      </div>
+    </div>
+
+    <div id="loading-screen" class="scene hidden">
+      <div class="hextech-container">
+        <div class="hex-text" id="status-text">Localizando Invocadora...</div>
+        <div class="progress-border">
+          <div class="progress-fill" id="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="pdf-screen" class="scene hidden">
+      <div class="book">
+        <div id="p6" class="page">
+          <img src="libro/6.jpg" alt="Tapa Final" />
+        </div>
+        <div id="p5" class="page">
+          <img src="libro/5.jpg" alt="Página 4" />
+        </div>
+        <div id="p4" class="page">
+          <img src="libro/4.jpg" alt="Página 3" />
+        </div>
+        <div id="p3" class="page">
+          <img src="libro/3.jpg" alt="Página 2" />
+        </div>
+        <div id="p2" class="page">
+          <img src="libro/2.jpg" alt="Página 1" />
+        </div>
+        <div id="p1" class="page">
+          <img src="libro/1.jpg" alt="Portada" />
+        </div>
+      </div>
+
+      <div class="book-controls">
+        <button onclick="retroceder()">ANTERIOR</button>
+        <button onclick="avanzar()">SIGUIENTE</button>
+      </div>
+      <p class="book-hint">PROPIEDAD EXCLUSIVA DE COSHI</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

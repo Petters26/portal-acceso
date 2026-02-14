@@ -1,0 +1,220 @@
+:root {
+  --white: #fdfbfa;
+  --pink: #f8c8dc;
+  --gold: #c89b3c;
+  --dark-blue: #010a13;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  transition: background-color 0.8s ease;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.theme-light {
+  background-color: var(--white);
+}
+body.theme-dark {
+  background-color: var(--dark-blue);
+}
+
+.scene {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Escena 1: Login */
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  border: 1px solid var(--pink);
+  max-width: 350px;
+}
+
+.avatar-container {
+  margin-bottom: 20px;
+}
+.login-avatar {
+  width: 100px;
+  border-radius: 50%;
+  filter: drop-shadow(0 5px 15px rgba(248, 200, 220, 0.4));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+input {
+  padding: 12px;
+  border: 1px solid var(--pink);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  background: var(--pink);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hint-text {
+  margin-top: 25px;
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  line-height: 1.4;
+}
+
+/* Escena 2: Loading */
+.hextech-container {
+  width: 300px;
+}
+.hex-text {
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.progress-border {
+  height: 10px;
+  border: 1px solid var(--gold);
+  padding: 2px;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gold);
+  transition: width 0.1s linear;
+}
+
+/* Escena 3: Libro 3D */
+.book {
+  width: 300px;
+  height: 533px;
+  position: relative;
+  perspective: 1500px;
+  margin-bottom: 30px;
+  transform-style: preserve-3d;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left;
+  backface-visibility: hidden;
+  background: transparent;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Asegura el orden de las capas al cargar */
+#p1 {
+  z-index: 60;
+}
+#p2 {
+  z-index: 50;
+}
+#p3 {
+  z-index: 40;
+}
+#p4 {
+  z-index: 30;
+}
+#p5 {
+  z-index: 20;
+}
+#p6 {
+  z-index: 10;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  /*background-color: #fff;*/
+}
+
+/* Animación de salida - CORREGIDA (sin opacity 0) */
+.page.flipped {
+  transform: rotateY(-160deg);
+  pointer-events: none;
+}
+
+.book-controls {
+  display: flex;
+  gap: 20px;
+}
+
+.book-controls button {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 10px 25px;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+
+.book-controls button:hover {
+  background: var(--gold);
+  color: var(--dark-blue);
+  box-shadow: 0 0 15px rgba(200, 155, 60, 0.4);
+}
+
+.book-hint {
+  color: var(--gold);
+  margin-top: 20px;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  opacity: 0.6;
+}
