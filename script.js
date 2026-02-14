@@ -27,7 +27,7 @@ function iniciarSecuencia() {
     return
   }
 
-  music.volume = 0 // Volumen tenue (40%)
+  music.volume = 0
   music
     .play()
     .catch((error) => console.log("El navegador bloqueó el autoplay inicial"))
@@ -75,18 +75,17 @@ function ejecutarCarga(bar, text, next, current) {
   }, 60)
 }
 
-// NAVEGACIÓN CORREGIDA
 function avanzar() {
   if (paginaActual < totalPaginas) {
     const p = document.getElementById("p" + paginaActual)
-    p.style.zIndex = "100" // La ponemos arriba mientras vuela
+    p.style.zIndex = "100"
     p.classList.add("flipped")
 
     paginaActual++
 
     setTimeout(() => {
       if (p.classList.contains("flipped")) {
-        p.style.zIndex = "1" // La mandamos al fondo al terminar
+        p.style.zIndex = "1"
       }
     }, 800)
   }
@@ -97,16 +96,11 @@ function retroceder() {
     paginaActual--
     const p = document.getElementById("p" + paginaActual)
 
-    // EL TRUCO: Subimos el z-index al máximo inmediatamente
     p.style.zIndex = "100"
     p.classList.remove("flipped")
 
-    // Después de que la animación termina (800ms),
-    // le devolvemos su valor de jerarquía original
     setTimeout(() => {
       if (!p.classList.contains("flipped")) {
-        // Esto calcula el z-index basado en su posición original
-        // p1 tendrá 60, p2 tendrá 50, etc.
         p.style.zIndex = (totalPaginas - paginaActual + 1) * 10
       }
     }, 800)

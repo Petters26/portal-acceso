@@ -154,7 +154,6 @@ button {
   opacity: 1;
 }
 
-/* Asegura el orden de las capas al cargar */
 #p1 {
   z-index: 60;
 }
@@ -183,7 +182,6 @@ button {
   /*background-color: #fff;*/
 }
 
-/* Animación de salida - CORREGIDA (sin opacity 0) */
 .page.flipped {
   transform: rotateY(-160deg);
   pointer-events: none;
