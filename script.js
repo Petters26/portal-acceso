@@ -10,6 +10,7 @@ const totalPaginas = 6
 
 function iniciarSecuencia() {
   const passInput = document.getElementById("pass")
+  const music = document.getElementById("bg-music")
   const login = document.getElementById("login-screen")
   const body = document.body
   const loading = document.getElementById("loading-screen")
@@ -25,6 +26,18 @@ function iniciarSecuencia() {
     passInput.focus()
     return
   }
+
+  music.volume = 0 // Volumen tenue (40%)
+  music
+    .play()
+    .catch((error) => console.log("El navegador bloqueó el autoplay inicial"))
+  let fadeAudio = setInterval(() => {
+    if (music.volume < 0.4) {
+      music.volume += 0.05
+    } else {
+      clearInterval(fadeAudio)
+    }
+  }, 200)
 
   login.classList.add("hidden")
 
